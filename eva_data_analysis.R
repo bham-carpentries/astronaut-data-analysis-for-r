@@ -6,24 +6,31 @@ library(lubridate)
 library(readr)
 library(stringr)
 
+read_json_to_dataframe <- function(input_file) {
+  print("Reading JSON file")
+
+  eva_df <- fromJSON(input_file, flatten = TRUE) |>
+    mutate(eva = as.numeric(eva)) |>
+    mutate(date = ymd_hms(date)) |>
+    mutate(year = year(date)) |>
+    drop_na() |>
+    arrange(date)
+
+  return(eva_df)
+}
+
+
 # https://data.nasa.gov/resource/eva.json (with modifications)
 input_file <- "eva-data.json"
 output_file <- "eva-data.csv"
 graph_file <- "cumulative_eva_graph.png"
 
 print("--START--")
-print("Reading JSON file")
+
 
 # Read the data from a JSON file into a Pandas dataframe
-eva_data <- fromJSON(input_file, flatten = TRUE) |>
- mutate(eva = as.numeric(eva)) |>
- mutate(date = ymd_hms(date)) |>
- mutate(year = year(date)) |>
- drop_na() |>
- arrange(date)
+eva_data <- read_json_to_dataframe(input_file)
 
-
-print("Saving to CSV file")
 # Save dataframe to CSV file for later analysis
 write_csv(eva_data, output_file)
 
