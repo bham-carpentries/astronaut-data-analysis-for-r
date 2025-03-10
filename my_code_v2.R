@@ -79,12 +79,13 @@ years <- years[sorted_indices]
 time <- time[sorted_indices]
 
 # Print total time in space
-print(sum(ct))
+print(ct[length(ct)])
 
 tdf <- data.frame(
   years = years,
   ct = ct[-1]
 )
+
 
 # Plot the data
 library(ggplot2)
