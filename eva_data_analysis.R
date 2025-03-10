@@ -27,10 +27,10 @@ graph_file <- "cumulative_eva_graph.png"
 
 print("--START--")
 
-
 # Read the data from a JSON file into a Pandas dataframe
 eva_data <- read_json_to_dataframe(input_file)
 
+print("Writing CSV File")
 # Save dataframe to CSV file for later analysis
 write_csv(eva_data, output_file)
 
