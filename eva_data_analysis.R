@@ -54,6 +54,34 @@ text_to_duration <- function(duration) {
   return(duration_hours)
 }
 
+#' Plot Cumulative Time in Space Over the Years
+#'
+#' This function plots the cumulative time spent in space over the years based on
+#' the data in the dataframe. The cumulative time is calculated by converting the
+#' "duration" column into hours, then computing the cumulative sum of the duration.
+#' The plot is saved as a PNG file at the specified location.
+#'
+#' @param tdf A dataframe containing a "duration" column in "HH:MM" format and a "date" column.
+#' @param graph_file A character string specifying the path to save the graph.
+#'
+#' @return NULL
+plot_cumulative_time_in_space <- function(tdf, graph_file) {
+
+  time_in_space_plot <- tdf |>
+    rowwise() |>
+    mutate(duration_hours = text_to_duration(duration)) |>  # Add duration_hours column
+    ungroup() |>
+    mutate(cumulative_time = cumsum(duration_hours)) |>     # Calculate cumulative time
+    ggplot(ggplot2::aes(x = date, y = cumulative_time)) +
+    geom_line(color = "black") +
+    labs(
+      x = "Year",
+      y = "Total time spent in space to date (hours)",
+      title = "Cumulative Spacewalk Time"
+    )
+
+  ggplot2::ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
+}
 
 # https://data.nasa.gov/resource/eva.json (with modifications)
 input_file <- "eva-data.json"
@@ -71,19 +99,6 @@ write_csv(eva_data, output_file)
 
 print("Plotting cumulative spacewalk duration and saving to file")
 # Plot cumulative time spent in space over years
-time_in_space_plot <- eva_data |>
-  rowwise() |>
-  mutate(duration_hours = text_to_duration(duration)) |>
-  ungroup() |>
-  # Calculate cumulative time
-  mutate(cumulative_time = cumsum(duration_hours)) |>
-  ggplot(aes(x = year, y = cumulative_time)) +
-  geom_line(color = "black") +
-  labs(
-    x = "Year",
-    y = "Total time spent in space to date (hours)",
-    title = "Cumulative Spacewalk Time" ) +
-  theme_minimal()
+plot_cumulative_time_in_space(eva_data, graph_file)
 
-ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
 print("--END--")
