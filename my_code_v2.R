@@ -1,4 +1,8 @@
+# https://data.nasa.gov/resource/eva.json (with modifications)
+
 # File paths
+#data_f <- "/home/sarah/Projects/ssi-ukrn-fair-course/data.json"
+#data_t <- "/home/sarah/Projects/ssi-ukrn-fair-course/data.csv"
 data_f <- "data.json"
 data_t <- "data.csv"
 
@@ -7,14 +11,14 @@ g_file <- "myplot.png"
 fieldnames <- c("eva", "country", "crew", "vehicle", "date", "duration", "purpose")
 
 data <- list()
-data_raw <- readLines(data_f, warn = FALSE)  # Read raw JSON lines
+data_raw <- readLines(data_f, warn = FALSE)
 
 # 374
 library(jsonlite)
-for (i in 1:374) {  # Hardcoded loop like in Python
+for (i in 1:374) {
   line <- data_raw[i]
   print(line)
-  data[[i]] <- fromJSON(substr(line, 2, nchar(line)))  # Remove brackets
+  data[[i]] <- fromJSON(substr(line, 2, nchar(line)))
 }
 
 # Initialize empty vectors
@@ -37,24 +41,24 @@ for (i in data) {  # Iterate manually
       print(ttt)
       time <- c(time, ttt)
 
-      if ("date" %in% names(data[[j]])) {
+      if (("date" %in% names(data[[j]]) & ("eva" %in% names(data[[j]])))) {
         date <- as.Date(substr(data[[j]]$date, 1, 10), format = "%Y-%m-%d")
         year <- as.numeric(format(date,"%Y"))
         dates <- c(dates, date)
         years <- c(years, year)
         row_data <- as.data.frame(data[[j]])
       } else {
-        time <- time[-1]  # Remove last element if date is missing
+        time <- time[-1]
       }
     }
   }
 
+  ## Comment out this bit if you don't want the spreadsheet
   if (exists("row_data")) {
     print(row_data)
     if (w==0) {
       write.table(row_data, data_t, sep = ",", row.names = FALSE, col.names = TRUE, append = FALSE)
     } else {
-      # Append new row without column names
       write.table(row_data, data_t, sep = ",", row.names = FALSE, col.names = FALSE, append = TRUE)
     }
     w <- w+1
@@ -66,7 +70,7 @@ for (i in data) {  # Iterate manually
 
 if (!exists("ct")) {ct <- c(0)}
 
-for (k in time) {  # Keep the same manual accumulation loop
+for (k in time) {
   ct <- c(ct, ct[length(ct)] + k)
 }
 
@@ -74,8 +78,7 @@ sorted_indices <- order(dates)
 years <- years[sorted_indices]
 time <- time[sorted_indices]
 
-
-# target 322354.15
+# Print total time in space
 print(sum(ct))
 
 tdf <- data.frame(
@@ -86,7 +89,7 @@ tdf <- data.frame(
 # Plot the data
 library(ggplot2)
 ggplot(tdf, aes(x = years, y = ct)) + geom_line(color = "black") + geom_point(color = "black") +
-  labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time Over Time" ) + theme_minimal() ; ct <- c(100)
+  labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time" ) + theme_minimal() ; ct <- c(111)
 
 # Save plot
 ggsave(g_file, width = 8, height = 6)
