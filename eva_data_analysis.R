@@ -19,6 +19,14 @@ read_json_to_dataframe <- function(input_file) {
   return(eva_df)
 }
 
+text_to_duration <- function(duration) {
+  time_parts <- stringr::str_split(duration, ":")[[1]]
+  hours <- as.numeric(time_parts[1])
+  minutes <- as.numeric(time_parts[2])
+  duration_hours <- hours + minutes / 60
+  return(duration_hours)
+}
+
 
 # https://data.nasa.gov/resource/eva.json (with modifications)
 input_file <- "eva-data.json"
@@ -38,9 +46,7 @@ print("Plotting cumulative spacewalk duration and saving to file")
 # Plot cumulative time spent in space over years
 time_in_space_plot <- eva_data |>
   rowwise() |>
-  mutate(duration_hours =
-                  sum(as.numeric(str_split_1(duration, "\\:"))/c(1, 60))
-  ) |>
+  mutate(duration_hours = text_to_duration(duration)) |>
   ungroup() |>
   # Calculate cumulative time
   mutate(cumulative_time = cumsum(duration_hours)) |>
