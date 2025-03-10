@@ -1,11 +1,3 @@
-library(jsonlite)
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(lubridate)
-library(readr)
-library(stringr)
-
 #' Read and Clean EVA Data from JSON
 #'
 #' This function reads EVA data from a JSON file, cleans it by converting
@@ -16,16 +8,16 @@ library(stringr)
 #' @param input_file A character string specifying the path to the input JSON file.
 #'
 #' @return A cleaned and sorted data frame containing the EVA data.
-#'
+#' @export
 read_json_to_dataframe <- function(input_file) {
   print("Reading JSON file")
 
-  eva_df <- fromJSON(input_file, flatten = TRUE) |>
-    mutate(eva = as.numeric(eva)) |>
-    mutate(date = ymd_hms(date)) |>
-    mutate(year = year(date)) |>
-    drop_na() |>
-    arrange(date)
+  eva_df <- jsonlite::fromJSON(input_file, flatten = TRUE) |>
+    dplyr::mutate(eva = as.numeric(eva)) |>
+    dplyr::mutate(date = lubridate::ymd_hms(date)) |>
+    dplyr::mutate(year = lubridate::year(date)) |>
+    tidyr::drop_na() |>
+    dplyr::arrange(date)
 
   return(eva_df)
 }
@@ -46,8 +38,9 @@ read_json_to_dataframe <- function(input_file) {
 #' @examples
 #' text_to_duration("03:45")  # Returns 3.75 hours
 #' text_to_duration("12:30")  # Returns 12.5 hours
+#' @export
 text_to_duration <- function(duration) {
-  time_parts <- str_split(duration, ":")[[1]]
+  time_parts <- stringr::str_split(duration, ":")[[1]]
   hours <- as.numeric(time_parts[1])
   minutes <- as.numeric(time_parts[2])
   duration_hours <- hours + minutes / 60
@@ -65,20 +58,22 @@ text_to_duration <- function(duration) {
 #' @param graph_file A character string specifying the path to save the graph.
 #'
 #' @return NULL
+#' @export
 plot_cumulative_time_in_space <- function(tdf, graph_file) {
 
   time_in_space_plot <- tdf |>
-    rowwise() |>
-    mutate(duration_hours = text_to_duration(duration)) |>  # Add duration_hours column
-    ungroup() |>
-    mutate(cumulative_time = cumsum(duration_hours)) |>     # Calculate cumulative time
-    ggplot(aes(x = date, y = cumulative_time)) +
-    geom_line(color = "black") +
-    labs(
+    dplyr::rowwise() |>
+    dplyr::mutate(duration_hours = text_to_duration(duration)) |>  # Add duration_hours column
+    dplyr::ungroup() |>
+    dplyr::mutate(cumulative_time = cumsum(duration_hours)) |>     # Calculate cumulative time
+    ggplot2::ggplot(ggplot2::aes(x = date, y = cumulative_time)) +
+    ggplot2::geom_line(color = "black") +
+    ggplot2::labs(
       x = "Year",
       y = "Total time spent in space to date (hours)",
       title = "Cumulative Spacewalk Time"
     )
 
-  ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
+  ggplot2::ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
+
 }
