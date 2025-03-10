@@ -88,7 +88,7 @@ tdf <- data.frame(
 
 # Plot the data
 library(ggplot2)
-ggplot(tdf, aes(x = years, y = ct)) + geom_line(color = "black") + geom_point(color = "black") +
+ggplot(tdf, aes(x = years, y = ct)) + geom_line(color = "black")  +
   labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time" ) + theme_minimal() ; ct <- c(111)
 
 # Save plot
