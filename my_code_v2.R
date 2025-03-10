@@ -1,10 +1,9 @@
 # https://data.nasa.gov/resource/eva.json (with modifications)
-
 # File paths
-data_f <- "data.json"
-data_t <- "data.csv"
+data_f <- "eva-data.json"
+data_t <- "eva-data.csv"
 
-g_file <- "myplot.png"
+g_file <- "cumulative_eva_graph.png"
 
 fieldnames <- c("eva", "country", "crew", "vehicle", "date", "duration", "purpose")
 
