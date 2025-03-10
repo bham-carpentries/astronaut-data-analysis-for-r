@@ -90,7 +90,10 @@ tdf <- data.frame(
 # Plot the data
 library(ggplot2)
 ggplot(tdf, aes(x = years, y = ct)) + geom_line(color = "black") + geom_point(color = "black") +
-  labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time" ) + theme_minimal() ; ct <- c(111)
+  labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time" ) + theme_minimal()
+
+# Correction for repeatability
+ct <- c(0)
 
 # Save plot
 ggsave(g_file, width = 8, height = 6)
