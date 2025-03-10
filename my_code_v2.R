@@ -1,8 +1,6 @@
 # https://data.nasa.gov/resource/eva.json (with modifications)
 
 # File paths
-#data_f <- "/home/sarah/Projects/ssi-ukrn-fair-course/data.json"
-#data_t <- "/home/sarah/Projects/ssi-ukrn-fair-course/data.csv"
 data_f <- "data.json"
 data_t <- "data.csv"
 
