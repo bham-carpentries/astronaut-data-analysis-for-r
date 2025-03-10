@@ -18,9 +18,10 @@ print("Reading JSON file")
 eva_data <- fromJSON(input_file, flatten = TRUE) |>
  mutate(eva = as.numeric(eva)) |>
  mutate(date = ymd_hms(date)) |>
+ mutate(year = year(date)) |>
  drop_na() |>
- arrange(date) |>
- mutate(year = year(date))
+ arrange(date)
+
 
 print("Saving to CSV file")
 # Save dataframe to CSV file for later analysis
