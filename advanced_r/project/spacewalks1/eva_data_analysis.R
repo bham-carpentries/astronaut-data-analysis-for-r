@@ -47,7 +47,7 @@ read_json_to_dataframe <- function(input_file) {
 #' text_to_duration("03:45")  # Returns 3.75 hours
 #' text_to_duration("12:30")  # Returns 12.5 hours
 text_to_duration <- function(duration) {
-  time_parts <- stringr::str_split(duration, ":")[[1]]
+  time_parts <- str_split(duration, ":")[[1]]
   hours <- as.numeric(time_parts[1])
   minutes <- as.numeric(time_parts[2])
   duration_hours <- hours + minutes / 60
@@ -72,7 +72,7 @@ plot_cumulative_time_in_space <- function(tdf, graph_file) {
     mutate(duration_hours = text_to_duration(duration)) |>  # Add duration_hours column
     ungroup() |>
     mutate(cumulative_time = cumsum(duration_hours)) |>     # Calculate cumulative time
-    ggplot(ggplot2::aes(x = date, y = cumulative_time)) +
+    ggplot(aes(x = date, y = cumulative_time)) +
     geom_line(color = "black") +
     labs(
       x = "Year",
@@ -80,7 +80,7 @@ plot_cumulative_time_in_space <- function(tdf, graph_file) {
       title = "Cumulative Spacewalk Time"
     )
 
-  ggplot2::ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
+  ggsave(graph_file, width = 8, height = 6, plot = time_in_space_plot)
 }
 
 # https://data.nasa.gov/resource/eva.json (with modifications)
