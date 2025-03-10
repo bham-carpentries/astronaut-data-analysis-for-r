@@ -1,8 +1,10 @@
+library(jsonlite)
+library(ggplot2)
+
 # https://data.nasa.gov/resource/eva.json (with modifications)
 # File paths
 data_f <- "eva-data.json"
 data_t <- "eva-data.csv"
-
 g_file <- "cumulative_eva_graph.png"
 
 fieldnames <- c("eva", "country", "crew", "vehicle", "date", "duration", "purpose")
@@ -11,7 +13,6 @@ data <- list()
 data_raw <- readLines(data_f, warn = FALSE)
 
 # 374
-library(jsonlite)
 for (i in 1:374) {
   line <- data_raw[i]
   print(line)
@@ -85,7 +86,6 @@ tdf <- data.frame(
 
 
 # Plot the data
-library(ggplot2)
 ggplot(tdf, aes(x = years, y = ct)) + geom_line(color = "black") + geom_point(color = "black") +
   labs( x = "Year", y = "Total time spent in space to date (hours)", title = "Cumulative Spacewalk Time" ) + theme_minimal()
 
