@@ -41,6 +41,34 @@ Either export data from the above page using the `Export` button or download in 
 #### Attribution
 This repository is an R-port (with modifications to match the flow of our course) of the [helper software code](https://github.com/carpentries-incubator/astronaut-data-analysis-not-so-fair/tree/main) 
 from the [FAIR research software course](https://github.com/carpentries-incubator/fair-research-software). 
-reused and modified under MIT license.  See
+reused and modified under MIT license.  
+
+##### 
+The original licence text from the [helper software code](https://github.com/carpentries-incubator/astronaut-data-analysis-not-so-fair/tree/main) is
+provided here:
+
+MIT License
+
+Copyright (c) 2024 carpentries-incubator
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+See
 [![DOI](https://zenodo.org/badge/776011771.svg)](https://zenodo.org/doi/10.5281/zenodo.12699084)
 
