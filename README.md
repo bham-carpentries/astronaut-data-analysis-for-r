@@ -7,13 +7,13 @@ This repository is an example of "not so reproducible" code project that is mean
 
 Various branches of this repository represent the state of the code as it should be at the start of each of the course episodes:
 
-- Episodes ["1. Course introduction"](https://github.com/bham-carpentries/2025-03-10-r-advanced/01-introduction.html), ["2. Good Practices"](https://github.com/bham-carpentries/2025-03-10-r-advanced/02-good-practices.html) are not making changes to the software
-- [branch 03-code-readability]([https://github.com/bham-carpentries/2025-03-10-r-advanced/03-code-readability.html](https://github.com/bham-carpentries/astronaut-data-analysis-r/)) matches the code at the start of episode ["3. Code Readability"](https://github.com/bham-carpentries/2025-03-10-r-advanced/03-code-readability.html)
-- [branch 04-project-structure]([https://github.com/bham-carpentries/2025-03-10-r-advanced/04-project-structure.html](https://github.com/bham-carpentries/astronaut-data-analysis-r/)) matches the code at the start of episode ["4. Project Structure"](https://github.com/bham-carpentries/2025-03-10-r-advanced/04-project-structure.html)
-- [branch 05-code-documentation](https://github.com/bham-carpentries/astronaut-data-analysis-r/05-code-readability.html) matches the code at the start of episode ["5. Code Documentation"](https://github.com/bham-carpentries/2025-03-10-r-advanced/05-code-readability.html)
-- [branch 06-code-correctness](https://github.com/bham-carpentries/astronaut-data-analysis-r/06-code-correctness.html) matches the code at the start of episode ["6. Code Correctness"](https://github.com/bham-carpentries/2025-03-10-r-advanced/06-code-correctness.html)
-- [branch 07-code-environment]([https://github.com/bham-carpentries/2025-03-10-r-advanced/](https://github.com/bham-carpentries/astronaut-data-analysis-r/07-code-environment.html) matches the code at the start of episode ["7. Code Environment"](https://github.com/bham-carpentries/2025-03-10-r-advanced/07-code-environment.html)
-- [branch 08-wrap-up]([https://github.com/bham-carpentries/2025-03-10-r-advanced/](https://github.com/bham-carpentries/astronaut-data-analysis-r/08-wrap-up.html) matches the code at the start of episode ["3. Code Readability"](https://github.com/bham-carpentries/2025-03-10-r-advanced/08-wrap-up.html)
+- Episodes ["1. Course introduction"](https://github.com/bham-carpentries/2025-03-11-r-advanced/01-introduction.html), ["2. Good Practices"](https://github.com/bham-carpentries/2025-03-11-r-advanced/02-good-practices.html) are not making changes to the software
+- [branch 03-code-readability](https://github.com/bham-carpentries/2025-03-11-r-advanced/03-code-readability.html](https://github.com/bham-carpentries/astronaut-data-analysis-r/) matches the code at the start of episode ["3. Code Readability"](https://github.com/bham-carpentries/2025-03-11-r-advanced/03-code-readability.html)
+- [branch 04-project-structure](https://github.com/bham-carpentries/2025-03-11-r-advanced/04-project-structure.html](https://github.com/bham-carpentries/astronaut-data-analysis-r/) matches the code at the start of episode ["4. Project Structure"](https://github.com/bham-carpentries/2025-03-11-r-advanced/04-project-structure.html)
+- [branch 05-code-documentation](https://github.com/bham-carpentries/astronaut-data-analysis-r/05-code-readability.html) matches the code at the start of episode ["5. Code Documentation"](https://github.com/bham-carpentries/2025-03-11-r-advanced/05-code-readability.html)
+- [branch 06-code-correctness](https://github.com/bham-carpentries/astronaut-data-analysis-r/06-code-correctness.html) matches the code at the start of episode ["6. Code Correctness"](https://github.com/bham-carpentries/2025-03-11-r-advanced/06-code-correctness.html)
+- [branch 07-code-environment]([https://github.com/bham-carpentries/2025-03-11-r-advanced/](https://github.com/bham-carpentries/astronaut-data-analysis-r/07-code-environment.html) matches the code at the start of episode ["7. Code Environment"](https://github.com/bham-carpentries/2025-03-11-r-advanced/07-code-environment.html)
+- [branch 08-wrap-up]([https://github.com/bham-carpentries/2025-03-11-r-advanced/](https://github.com/bham-carpentries/astronaut-data-analysis-r/08-wrap-up.html) matches the code at the start of episode ["3. Code Readability"](https://github.com/bham-carpentries/2025-03-11-r-advanced/08-wrap-up.html)
 
 
 ### What the code does
@@ -22,7 +22,7 @@ exported/downloaded in JSON format, does some analysis over this data, plots a f
 
 ### Better code
 An example of better and more reproducible code that participants should strive to achieve when writing their reseach software 
-can be found on the final branch [branch 08-wrap-up](https://github.com/bham-carpentries/2025-03-10-r-advanced/08-wrap-up.html).
+can be found on the final branch [branch 08-wrap-up](https://github.com/bham-carpentries/2025-03-11-r-advanced/08-wrap-up.html).
 
 ### Acknowledgements
 
