@@ -43,7 +43,7 @@ This repository is an R-port (with modifications to match the flow of our course
 from the [FAIR research software course](https://github.com/carpentries-incubator/fair-research-software). 
 reused and modified under MIT license.  
 
-##### 
+##### LICENSE
 The original licence text from the [helper software code](https://github.com/carpentries-incubator/astronaut-data-analysis-not-so-fair/tree/main) is
 provided here:
 
